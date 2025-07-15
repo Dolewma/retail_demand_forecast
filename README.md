@@ -1,81 +1,76 @@
 # Retail Demand Forecasting App
 
-Dieses Projekt beinhaltet die Entwicklung einer Anwendung zur Prognose der Verkaufszahlen im Einzelhandel. Die zugrunde liegenden Modelle wurden im Rahmen eines Machine Learning-Projekts erstellt, trainiert und in einer interaktiven Streamlit-Anwendung eingebunden.
+This project involved developing an interactive application to forecast product sales across retail stores. The underlying models were built and trained as part of a machine learning pipeline and integrated into a user-facing Streamlit web interface.
 
-Projektziel
-Ziel war es, die Nachfrage nach Produkten in verschiedenen Filialen vorherzusagen. Dies unterstützt Geschäftsentscheidungen im Bereich Lagerhaltung, Beschaffung und Planung.
+Project Goal
+The objective was to predict product demand for different stores, enabling better decision-making in inventory, procurement, and supply planning.
 
-Die Webanwendung ermöglicht es, Store, Item und ein Datum (im Zeitraum Januar bis März 2014) auszuwählen. Darauf basierend wird eine Absatzprognose mit einem von drei verfügbaren Modellen erstellt.
+Application Features
+The web app allows users to select a store, item, and date (within January to March 2014). Based on this input, it generates a sales forecast using one of three available models.
 
-Explorative Datenanalyse (Week 1)
-In der EDA wurden u. a. folgende Aspekte untersucht:
+Exploratory Data Analysis
+Key insights included:
 
-Saisonale und wöchentliche Muster in den Verkaufszahlen
+Seasonal and weekly patterns in sales
 
-Einfluss von Feiertagen und Promotionen
+Influence of holidays and promotions
 
-Entwicklung des Ölpreises im Zeitverlauf
+Trends in oil prices over time
 
-Unterschiede im Kaufverhalten zwischen Stores und Produktfamilien
+Behavioral differences across stores and product families
+Tools used: pandas, matplotlib, seaborn, plotly
+Documented in: course_project_week_1.ipynb
 
-Verwendete Bibliotheken: pandas, matplotlib, seaborn, plotly
+Modeling and Optimization
+Three model types were developed and evaluated:
 
-Detailliert dokumentiert in: course_project_week_1.ipynb
+XGBoost: Gradient boosted trees, tends to produce higher, more aggressive forecasts
 
-Modellierung & Optimierung (Week 2 & 3)
-Im Fokus standen drei Modellansätze:
+LSTM: Deep learning model for time series, generates more stable and conservative predictions
 
-XGBoost
-Gradient Boosted Trees. Liefert tendenziell höhere Prognosen (aggressiver Charakter).
+Hybrid Model: Combines XGBoost and LSTM, dynamically adjusting weights based on the difference between individual predictions
 
-LSTM (Long Short-Term Memory)
-Deep Learning Modell, speziell zur Modellierung von Zeitreihen. Liefert konservativere, stabilere Prognosen.
+Feature Engineering
+Key features included:
 
-Hybrid-Modell (XGBoost + LSTM)
-Kombination beider Modelle. Die Gewichtung wird dynamisch angepasst, abhängig von der Differenz beider Einzelprognosen.
+Lag variables (1, 7, 14, 30 days)
 
-Feature Engineering beinhaltete unter anderem:
+Moving averages
 
-Lag-Features (1, 7, 14, 30 Tage)
+Time-based features (weekday, month, holidays)
 
-Durchschnittswerte
+Oil price indicators
+Development steps documented in: course_project_week_2_and_3_.ipynb
 
-Zeitmerkmale wie Wochentag, Monat, Feiertag
+Streamlit App Capabilities
 
-Ölpreis-bezogene Merkmale
+Select between XGBoost, LSTM, or Hybrid model
 
-Trainings- und Optimierungsprozesse dokumentiert in:
-course_project_week_2_and_3_.ipynb
+Input: store, item, and forecast date (Jan–Mar 2014)
 
-Streamlit App
-Die entwickelte Webanwendung bietet folgende Funktionen:
+Automatic data preparation and feature engineering
 
-Auswahl eines Prognosemodells (XGBoost, LSTM oder Hybrid)
+Forecast output with integrated error handling
 
-Eingabe von Store, Item und Datum (beschränkt auf Jan–März 2014)
-
-Automatische Vorbereitung der Daten (inkl. Lag-Berechnung, Feature-Erweiterung)
-
-Vorhersage der Verkaufsmenge mit Fehlerbehandlung
+Project Structure
 
 retail_demand_forecast/
 ├── app/
 │   ├── main.py
 │   ├── config.py
-│   
 ├── model/
 │   ├── model_utils.py
-│   
 ├── data/
 │   ├── data_utils.py
 │   └── __init__.py
-├── models/                    # Modell-Dateien (.pkl, .h5)
+├── models/       # .pkl and .h5 files
 ├── requirements.txt
 ├── README.md
 └── course_project_week_*.ipynb
 
 
-Fazit
-Das Projekt verbindet klassische ML-Verfahren (XGBoost) mit modernen Deep-Learning-Techniken (LSTM) in einer produktionsnahen Streamlit-Oberfläche. Durch intelligentes Feature Engineering und datengetriebene Kombination der Modelle entsteht eine realistische Absatzprognose, die sich in der Praxis vielfältig einsetzen lässt.
+Conclusion
+This project combines traditional machine learning (XGBoost) with deep learning (LSTM) in a production-oriented Streamlit interface. Through advanced feature engineering and model blending, it delivers realistic and interpretable demand forecasts that can be applied in real-world retail scenarios.
 
+Link to project in comments or profile.
 
